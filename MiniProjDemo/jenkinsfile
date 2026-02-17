@@ -22,7 +22,7 @@ pipeline {
             steps {
                 script {
                     // Build Docker image
-                    docker.build("${DOCKER_IMAGE_NAME}", '.')
+                    docker.build("${DOCKER_IMAGE_NAME}", './MiniProjDemo')
                 }
             }
         }
@@ -31,8 +31,8 @@ pipeline {
             steps {
                 script{
                     docker.withRegistry('', 'DockerHubCred') {
-                    sh 'docker tag calculator iiitb/calculator:latest'
-                    sh 'docker push iiitb/calculator'
+                    sh 'docker tag calculator adithip/calculator:latest'
+                    sh 'docker push adithip/calculator'
                     }
                  }
             }
